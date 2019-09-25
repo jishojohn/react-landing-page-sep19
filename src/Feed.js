@@ -18,6 +18,7 @@ const Feed = () => {
     // AppContent is a component created in App.js
     // useContext will access the values of AppContext
     const [globalState, setGlobalState] = useContext(AppContext);
+    let commentField;
 
     if(globalState.loggedIn) {
     return (
@@ -35,8 +36,11 @@ const Feed = () => {
                 ) 
             }
             <div className="form-group">
-                <textarea className="form-control" 
+                <textarea 
+                ref={ (thisComponent)=> commentField = thisComponent }
+                className="form-control" 
                 placeholder="Enter your comment"/>
+
                 <button className="btn btn-primary">Post Comment</button>
             </div>
         </div>
