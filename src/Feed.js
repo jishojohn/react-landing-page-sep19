@@ -34,6 +34,11 @@ const Feed = () => {
                         comment={entry.comment} />
                 ) 
             }
+            <div className="form-group">
+                <textarea className="form-control" 
+                placeholder="Enter your comment"/>
+                <button className="btn btn-primary">Post Comment</button>
+            </div>
         </div>
     )
     } else {
