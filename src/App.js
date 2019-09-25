@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import NavBar from './NavBar';
 import Feed from './Feed';
 import Jumbotron from './Jumbotron';
@@ -19,7 +19,7 @@ const App = () => {
           feed: [
             {user: 'Jim', comment: 'This comment is from Jim'},
             {user: 'Jane', comment: 'Going to tennis practice tonight'},
-            {user: 'Mohammad', comment: 'Big traffic near downtown dubai'},
+            {user: 'Mohammad', comment: 'Big traffic near dubai'},
             {user: 'Mary', comment: 'Graduating in 1 week! #exicted'}
           ]
       }
@@ -37,7 +37,7 @@ const App = () => {
             description="This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
           />
 
-          <Feed />
+         <Feed />
       </div>
     </AppContext.Provider>
   );
