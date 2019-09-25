@@ -20,6 +20,30 @@ const Feed = () => {
     const [globalState, setGlobalState] = useContext(AppContext);
     let commentField;
 
+    const postComment = () => {
+        const newComment = commentField.value;
+        const newUser = 'Alex';
+        const newEntry = {
+            user: newUser,
+            comment: newComment
+        }
+
+        // Create an empty array
+        const newFeedArray = [];
+
+        // Copy to newFeedArray the contents of globalState.feed
+        Object.assign(newFeedArray, globalState.feed);
+
+        // Push the new comment newFeedArray
+        newFeedArray.push(newEntry);
+
+        setGlobalState(
+            { ...globalState, feed: newFeedArray }
+        )
+
+    }
+
+
     if(globalState.loggedIn) {
     return (
         <div className="feed container">
@@ -36,12 +60,13 @@ const Feed = () => {
                 ) 
             }
             <div className="form-group">
-                <textarea 
-                ref={ (thisComponent)=> commentField = thisComponent }
+                <textarea
+                ref={ (textComp)=> commentField = textComp }
                 className="form-control" 
                 placeholder="Enter your comment"/>
 
-                <button className="btn btn-primary">Post Comment</button>
+                <button onClick={postComment} 
+                className="btn btn-primary">Post Comment</button>
             </div>
         </div>
     )
