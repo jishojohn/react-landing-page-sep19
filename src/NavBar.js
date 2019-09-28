@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from './AppContext';
 
@@ -29,6 +29,13 @@ const LoginGroup = () => {
 }
 
 const NavBar = (prop) => {
+
+    const [state] = useState({
+        home: prop.location === '/' ? 'btn-success' : 'btn-primary',
+        about: prop.location === '/about' ? 'btn-success' : 'btn-primary',
+        contact: prop.location === '/contact' ? 'btn-success' : 'btn-primary',
+    });
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div>
@@ -36,9 +43,9 @@ const NavBar = (prop) => {
             </div>
 
             <div className="btn-group">
-              <Link to="/" className="btn btn-primary">Home</Link>
-              <Link to="/about" className="btn btn-primary">About</Link>
-              <Link className="btn btn-primary">Contact</Link>
+              <Link to="/" className={`btn ${state.home}`}>Home</Link>
+              <Link to="/about" className={`btn ${state.about}`}>About</Link>
+              <Link to="/contact" className={`btn ${state.contact}`}>Contact</Link>
             </div>
 
             <LoginGroup />
