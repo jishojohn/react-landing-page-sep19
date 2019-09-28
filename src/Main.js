@@ -10,7 +10,7 @@ const Main = () => {
 
     const [globalState, setGlobalState] = useState(
         { 
-            loggedIn: true,
+            loggedIn: false,
             users: [
               'Jim',
               'Jane',
