@@ -23,7 +23,8 @@ const RegistrationForm = () => {
 
     let name, email, occupation, password;
 
-    const validateFields = (fields) => {
+    const submitForm = () => {
+        
     }
 
     return (
@@ -32,17 +33,17 @@ const RegistrationForm = () => {
                 <Input ref={comp=>name = comp} placeholder="Name" />
             </Form.Item>
             <Form.Item label="Email" required>
-                <Input placeholder="Email" />
+                <Input ref={comp=>email = comp} placeholder="Email" />
             </Form.Item>
             <Form.Item label="Password" required>
-                <Input placeholder="Password" />
+                <Input ref={comp=>password = comp} placeholder="Password" />
             </Form.Item>
             <Form.Item label="Occupation" required>
-                <Input placeholder="Occupation" />
+                <Input ref={comp=>occupation = comp} placeholder="Occupation" />
             </Form.Item>
             <Form.Item wrapperCol={{ span: 12, offset: 8 }}>
                 <Button 
-                onClick={validateFields}
+                onClick={submitForm}
                 type="primary" htmlType="submit">
                     Submit
                 </Button>
