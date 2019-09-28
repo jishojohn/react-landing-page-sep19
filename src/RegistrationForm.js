@@ -24,7 +24,25 @@ const RegistrationForm = () => {
     let name, email, occupation, password;
 
     const submitForm = () => {
-        
+
+        const formData = {
+            name,
+            email,
+            occupation,
+            password
+        }
+
+        fetch(
+            'http://localhost:5000/auth/register',
+            {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {"Content-Type": "application/json"}
+            }
+        ).then(async res=>{
+            let ret = await res.json()
+            console.log('res', res)
+        })
     }
 
     return (
