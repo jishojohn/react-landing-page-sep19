@@ -26,6 +26,8 @@ const Main = () => {
     );
 
     return (
+
+        
         <AppContext.Provider value={[globalState, setGlobalState]}>
             <BrowserRouter>
                 <Switch>

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AppContext from './AppContext';
 
 const LoginGroup = () => {
@@ -35,9 +36,9 @@ const NavBar = (prop) => {
             </div>
 
             <div className="btn-group">
-              <button className="btn btn-primary">Home</button>
-              <button className="btn btn-primary">About</button>
-              <button className="btn btn-primary">Contact</button>
+              <Link onClick={()=>alert("Clicked")} to="/" className="btn btn-primary">Home</Link>
+              <Link to="/about" className="btn btn-primary">About</Link>
+              <Link className="btn btn-primary">Contact</Link>
             </div>
 
             <LoginGroup />
