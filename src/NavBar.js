@@ -36,7 +36,7 @@ const NavBar = (prop) => {
             </div>
 
             <div className="btn-group">
-              <Link onClick={()=>alert("Clicked")} to="/" className="btn btn-primary">Home</Link>
+              <Link to="/" className="btn btn-primary">Home</Link>
               <Link to="/about" className="btn btn-primary">About</Link>
               <Link className="btn btn-primary">Contact</Link>
             </div>
