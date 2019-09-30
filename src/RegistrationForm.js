@@ -4,6 +4,8 @@ import {
     Form,
     Input,
     Button,
+    Tooltip,
+    Icon
 } from 'antd';
 
 const RegistrationForm = () => {
@@ -19,6 +21,7 @@ const RegistrationForm = () => {
             password: password.input.value
         }
 
+        // Make a fetch (POST) request
         fetch(
             'http://localhost:5000/auth/register',
             {
@@ -26,12 +29,18 @@ const RegistrationForm = () => {
                 body: JSON.stringify(formData),
                 headers: {"Content-Type": "application/json"}
             }
-        ).then(async res=>{
-            let ret = await res.json()
-            if(res.ok) {
+        )
+        // Process the callback
+        .then(async res=>{
 
+            // resJSON contains response from backend
+            let resJSON = await res.json();
+            console.log('resJSON', resJSON)
+
+            if(res.ok) {
+                console.log("You have been registered successfully")
             } else {
-                
+                console.log("Something went wrong")
             }
         })
     }
@@ -43,10 +52,23 @@ const RegistrationForm = () => {
                     <Input ref={comp=>name = comp} placeholder="Name" />
                 </Form.Item>
                 <Form.Item label="Email" required>
-                    <Input ref={comp=>email = comp} placeholder="Email" />
+                    <Input ref={comp=>email = comp} placeholder="Email"
+                    suffix={
+                        <Tooltip title="Only Gmails accounts accepted">
+                            <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                        </Tooltip>
+                    } />
                 </Form.Item>
                 <Form.Item label="Password" required>
-                    <Input.Password ref={comp=>password = comp} placeholder="Password" />
+                    <Input.Password 
+                        ref={comp=>password = comp} 
+                        placeholder="Password" 
+                        suffix={
+                            <Tooltip title="Extra information">
+                                <Icon type="info-circle" style={{ color: 'rgba(0,0,0,.45)' }} />
+                            </Tooltip>
+                        }
+                    />
                 </Form.Item>
                 <Form.Item label="Occupation" required>
                     <Input ref={comp=>occupation = comp} placeholder="Occupation" />
