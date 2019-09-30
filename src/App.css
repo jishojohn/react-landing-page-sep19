@@ -56,6 +56,13 @@
   text-align: center;
 }
 
+.form {
+  border: solid 1px lightgray;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .form-group {
   margin: 20px 0 50px 0;
 }
