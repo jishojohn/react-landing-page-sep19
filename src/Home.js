@@ -11,7 +11,7 @@ const Home = (prop) => {
 
   const [globalState, setGlobalState] = useContext(AppContext);
 
-  const modalCloseHandler = () => {
+  const modalCloseHandler = (e, b) => {
     setGlobalState({ 
       ...globalState,
       userForm: null

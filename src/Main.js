@@ -29,7 +29,11 @@ const Main = () => {
 
     useEffect(()=>{
         if(!localStorage.getItem('token') && globalState.loggedIn) {
-            localStorage.setItem('token', globalState.token)
+            localStorage.setItem('token', globalState.token);
+            setGlobalState({ 
+                ...globalState,
+                userForm: null
+            })
         }
 
         if(!globalState.loggedIn) {
