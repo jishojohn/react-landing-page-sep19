@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'antd/dist/antd.css'; 
 import {
     Form,
     Input,
     Button,
     Tooltip,
-    Icon
+    Icon,
+    Alert
 } from 'antd';
 
 const RegistrationForm = () => {
 
+    const [state, setState] = useState(
+        {
+            registration: '',
+            errorMessage: '',
+            loading: false
+        }
+    )
+
     let name, email, occupation, password;
 
     const submitForm = () => {
+
+        setState({...state, loading: true});
 
         const formData = {
             name: name.input.value,
@@ -37,10 +48,19 @@ const RegistrationForm = () => {
             let resJSON = await res.json();
             console.log('resJSON', resJSON)
 
+            // res.ok whenever 2xx
             if(res.ok) {
-                console.log("You have been registered successfully")
+                setState({ 
+                    ...state,
+                    registration: 'successful',
+                    loading: false
+                })
             } else {
-                console.log("Something went wrong")
+                setState({ 
+                    registration: 'unsuccessful',
+                    errorMessage: resJSON.message,
+                    loading: false
+                })
             }
         })
     }
@@ -75,11 +95,23 @@ const RegistrationForm = () => {
                 </Form.Item>
                 <Form.Item>
                     <Button 
+                    loading={state.loading}
                     onClick={submitForm}
                     type="primary" htmlType="submit">
                         Submit
                     </Button>
                 </Form.Item>
+
+                    { 
+                        state.registration === 'successful' && 
+                        <Alert message="You have been registered successfully" type="success" /> 
+                    }
+
+                    { 
+                        state.registration === 'unsuccessful' && 
+                        <Alert message={state.errorMessage} type="error" /> 
+                    }
+
             </Form>
         </div>
     )
