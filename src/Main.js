@@ -26,19 +26,27 @@ const Main = () => {
         }
     );
 
+    const LayoutRoute = ({ location, path, exact, component }) => {
+        return (
+            <div>
+                <NavBar 
+                    location={location.pathname} 
+                    logo="XYZ Company"/>
+                <Route path={path} exact={exact} component={component} />
+                <footer>
+                    2019 mywebsite.com
+                </footer>
+            </div>
+        )
+    }
+
     return (  
         <AppContext.Provider value={[globalState, setGlobalState]}>
             <BrowserRouter>
-                <Route path="/" component={
-                    (props)=>
-                        <NavBar 
-                            location={props.location.pathname} 
-                            logo="XYZ Company"/>
-                } />
                 <Switch>
-                    <Route path="/" exact component={App} />
-                    <Route path="/about" component={About} />
-                    <Route path="/contact" component={Contact} />
+                    <LayoutRoute path="/" exact component={App} />
+                    <LayoutRoute path="/about" component={About} />
+                    <LayoutRoute path="/contact" component={Contact} />
                 </Switch>
             </BrowserRouter>
         </AppContext.Provider>
