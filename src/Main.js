@@ -11,6 +11,7 @@ const Main = () => {
     const [globalState, setGlobalState] = useState(
         { 
             loggedIn: localStorage.getItem('token') ? true : false,
+            userForm: null,
             users: [
               'Jim',
               'Jane',

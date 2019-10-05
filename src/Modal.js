@@ -1,13 +1,15 @@
 import React from 'react';
 
 const Modal = (prop) => {
+
     return(
         <div className="modal-container">
             <div className="modal">
-                {prop.children}
                 <button 
-                onClick={prop.onClose}
+                onClick={prop.modalCloseHandler}
                 className="btn btn-danger">Close</button>
+
+                {prop.children}
             </div>
         </div>
     )

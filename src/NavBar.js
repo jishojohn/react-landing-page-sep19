@@ -9,6 +9,14 @@ const LoginGroup = () => {
         setGlobalState({ ...globalState, loggedIn: false })
     }
 
+    const showRegistrationForm = () => {
+        setGlobalState({ ...globalState, userForm: 'registration' })
+    }
+
+    const showLoginForm = () => {
+        setGlobalState({ ...globalState, userForm: 'login' })
+    }
+
     if(globalState.loggedIn) {
         return (
             <div>
@@ -20,8 +28,8 @@ const LoginGroup = () => {
     } else {
         return (
             <div>
-                <button className="btn btn-primary">Register</button>
-                <button className="btn btn-primary">Log In</button>
+                <button onClick={showRegistrationForm} className="btn btn-primary">Register</button>
+                <button onClick={showLoginForm} className="btn btn-primary">Log In</button>
             </div>
         )
     }
@@ -37,8 +45,13 @@ const NavBar = (prop) => {
         contact: prop.location === '/contact' ? 'btn-success' : 'btn-primary',
     });
 
+    // Use useEffect to listen to changes outside of the component
     useEffect(()=>{
+
+        // When the prop.location changes
         if(prop.location !== state.currentPage) {
+
+            // Renew the state
             setState({
                 currentPage: prop.location,
                 home: prop.location === '/' ? 'btn-success' : 'btn-primary',

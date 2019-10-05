@@ -43,9 +43,11 @@ const LoginForm = () => {
             }
         )
         .then(async (res)=>{
+            // Parsing reponse from the backend
             let resJSON = await res.json();
             console.log('resJSON', resJSON);
 
+            // Is res.status is equal to 2xx
             if(res.ok) {
                 setGlobalState({
                     ...globalState, //copy the entire globalState
