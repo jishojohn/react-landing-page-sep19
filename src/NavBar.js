@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from './AppContext';
 
@@ -30,11 +30,23 @@ const LoginGroup = () => {
 
 const NavBar = (prop) => {
 
-    const [state] = useState({
+    const [state, setState] = useState({
+        currentPage: prop.location,
         home: prop.location === '/' ? 'btn-success' : 'btn-primary',
         about: prop.location === '/about' ? 'btn-success' : 'btn-primary',
         contact: prop.location === '/contact' ? 'btn-success' : 'btn-primary',
     });
+
+    useEffect(()=>{
+        if(prop.location !== state.currentPage) {
+            setState({
+                currentPage: prop.location,
+                home: prop.location === '/' ? 'btn-success' : 'btn-primary',
+                about: prop.location === '/about' ? 'btn-success' : 'btn-primary',
+                contact: prop.location === '/contact' ? 'btn-success' : 'btn-primary',             
+            })
+        }
+    })
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
