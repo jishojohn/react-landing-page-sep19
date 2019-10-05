@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'antd/dist/antd.css'; 
 import {
     Form,
@@ -9,10 +9,15 @@ import {
     Alert
 } from 'antd';
 
+import AppContext from './AppContext';
+
 
 const LoginForm = () => {
 
-    let name, email, occupation, password;
+
+    const [globalState, setGlobalState] = useContext(AppContext);
+
+    let email, password;
 
     const [state, setState] = useState(
         {
@@ -22,7 +27,34 @@ const LoginForm = () => {
         }
     )
 
-    const submitForm = () => {}
+    const submitForm = () => {
+
+        const formData = {
+            email: email.input.value,
+            password: password.input.value
+        }
+
+        fetch(
+            'http://localhost:5000/auth/login/',
+            {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {"Content-Type": "application/json"}
+            }
+        )
+        .then(async (res)=>{
+            let resJSON = await res.json();
+            console.log('resJSON', resJSON);
+
+            if(res.ok) {
+                setGlobalState({
+                    ...globalState, //copy the entire globalState
+                    loggedIn: true, //override the loggedIn in globalState
+                    token: resJSON.token //create token in the globalState
+                });
+            }
+        });
+    }
 
     return (<div className="container">
         <Form className="form">

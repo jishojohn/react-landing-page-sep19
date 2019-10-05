@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
@@ -10,7 +10,7 @@ const Main = () => {
 
     const [globalState, setGlobalState] = useState(
         { 
-            loggedIn: false,
+            loggedIn: localStorage.getItem('token') ? true : false,
             users: [
               'Jim',
               'Jane',
@@ -25,6 +25,16 @@ const Main = () => {
             ]
         }
     );
+
+    useEffect(()=>{
+        if(!localStorage.getItem('token') && globalState.loggedIn) {
+            localStorage.setItem('token', globalState.token)
+        }
+
+        if(!globalState.loggedIn) {
+            localStorage.removeItem('token');
+        }
+    });
 
     const LayoutRoute = ({ location, path, exact, component }) => {
         return (
