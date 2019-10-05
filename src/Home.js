@@ -4,7 +4,7 @@ import Jumbotron from './Jumbotron';
 import RegistrationForm from './RegistrationForm'
 import './App.css';
 
-const App = (prop) => {
+const Home = (prop) => {
   return (
       <div className="App">
           <Jumbotron 
@@ -18,4 +18,4 @@ const App = (prop) => {
   );
 }
 
-export default App;
+export default Home;

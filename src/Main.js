@@ -1,6 +1,6 @@
 import React, { useState }  from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import App from './App';
+import Home from './Home';
 import About from './About';
 import Contact from './Contact'
 import NavBar from './NavBar'
@@ -44,7 +44,7 @@ const Main = () => {
         <AppContext.Provider value={[globalState, setGlobalState]}>
             <BrowserRouter>
                 <Switch>
-                    <LayoutRoute path="/" exact component={App} />
+                    <LayoutRoute path="/" exact component={Home} />
                     <LayoutRoute path="/about" component={About} />
                     <LayoutRoute path="/contact" component={Contact} />
                 </Switch>
