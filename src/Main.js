@@ -1,5 +1,5 @@
-import React, { useState, useEffect }  from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect, useContext }  from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Contact from './Contact'
@@ -55,13 +55,31 @@ const Main = () => {
         )
     }
 
+    const PrivateRoute = ({ component: Component, ...rest }) => {
+
+        const [globalState] = useContext(AppContext);
+        
+        return (<Route 
+            {...rest}
+            render={
+                props=> globalState.token || localStorage.getItem('token') ? 
+                ( <Component {...props} />) : 
+                ( <Redirect
+                    to={{
+                        pathname: '/sign-in',
+                    }}
+                />)
+            }
+        />)
+    }
+
     return (  
         <AppContext.Provider value={[globalState, setGlobalState]}>
             <BrowserRouter>
                 <Switch>
                     <LayoutRoute path="/" exact component={Home} />
                     <LayoutRoute path="/about" component={About} />
-                    <LayoutRoute path="/contact" component={Contact} />
+                    <PrivateRoute path="/contact" component={Contact} />
                 </Switch>
             </BrowserRouter>
         </AppContext.Provider>

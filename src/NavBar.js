@@ -6,7 +6,7 @@ const LoginGroup = () => {
     const [globalState, setGlobalState] = useContext(AppContext);
 
     const logOutUser = () => {
-        setGlobalState({ ...globalState, loggedIn: false })
+        setGlobalState({ ...globalState, loggedIn: false, token: null })
     }
 
     const showRegistrationForm = () => {
