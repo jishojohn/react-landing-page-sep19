@@ -5,6 +5,7 @@ import About from './About';
 import Contact from './Contact'
 import NavBar from './NavBar'
 import AppContext from './AppContext.js'
+import './App.css'
 
 const Main = () => {
 
