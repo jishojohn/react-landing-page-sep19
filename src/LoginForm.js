@@ -35,7 +35,7 @@ const LoginForm = () => {
         }
 
         fetch(
-            'http://localhost:5000/auth/login/',
+            `${process.env.REACT_APP_API_URL}/auth/login/`,
             {
                 method: 'POST',
                 body: JSON.stringify(formData),

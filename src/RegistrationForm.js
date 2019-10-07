@@ -34,7 +34,7 @@ const RegistrationForm = () => {
 
         // Make a fetch (POST) request
         fetch(
-            'http://localhost:5000/auth/register',
+            `${process.env.REACT_APP_API_URL}/auth/register/`,
             {
                 method: 'POST',
                 body: JSON.stringify(formData),

@@ -5,7 +5,7 @@ import RegistrationForm from './RegistrationForm'
 import LoginForm from './LoginForm'
 import AppContext from './AppContext'
 import Modal from './Modal'
-import './App.css';
+import './App.css'
 
 const Home = (prop) => {
 

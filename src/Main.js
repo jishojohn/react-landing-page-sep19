@@ -55,20 +55,24 @@ const Main = () => {
         )
     }
 
-    const PrivateRoute = ({ component: Component, ...rest }) => {
+    const PrivateRoute = ({ component: Component, ...restOfProps }) => {
 
-        const [globalState] = useContext(AppContext);
-        
-        return (<Route 
-            {...rest}
+        const [globalState] = useContext(AppContext);        
+        return (
+            <Route 
+            {...restOfProps}
             render={
-                props=> globalState.token || localStorage.getItem('token') ? 
+                // Check to see if user is logged in
+                (props) => globalState.token || localStorage.getItem('token') ? 
+                // If yes, render the component
                 ( <Component {...props} />) : 
+                // Otherwise, redirect to /sign-in
                 ( <Redirect
                     to={{
                         pathname: '/sign-in',
                     }}
                 />)
+            
             }
         />)
     }
