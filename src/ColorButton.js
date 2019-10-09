@@ -17,7 +17,7 @@ const ColorButton = () => {
     }
 
     return (
-        <button onClick={clickHandler} 
+        <button onClick={clickHandler}
         className={`btn ${state.class}`}>{state.label}</button>
     )
 }
