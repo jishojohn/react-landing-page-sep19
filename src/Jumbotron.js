@@ -40,11 +40,11 @@ const Jumbotron = (prop) => {
                     <div className="col-auto my-1">   
                     {
                         state.emailValid !== "valid" &&
-                        <a href="#"
+                        <button
                         id="Newsletter"
                         onClick={subsribeUser}
                         type="submit"
-                        className="btn btn-primary">Subscribe</a>
+                        className="btn btn-primary">Subscribe</button>
                     }
                     </div>
                 </div>
