@@ -52,7 +52,8 @@ const LoginForm = () => {
                 setGlobalState({
                     ...globalState, //copy the entire globalState
                     loggedIn: true, //override the loggedIn in globalState
-                    token: resJSON.token //create token in the globalState
+                    token: resJSON.token, //create token in the globalState
+                    name: resJSON.name
                 });
             }
         });

@@ -20,7 +20,7 @@ const LoginGroup = () => {
     if(globalState.loggedIn) {
         return (
             <div>
-                <div>Welcome back, {globalState.userName}</div>
+                <div>Welcome back, {globalState.name}</div>
                 <button onClick={logOutUser} 
                 className="btn btn-primary">Log Out</button>
             </div>
